@@ -73,15 +73,18 @@ class ConfessionDB {
         ]);
     }
     
-    public function getConfessions($page = 1, $limit = 10) {
+    public function getConfessions($page = 1, $limit = 10, $includeHidden = false) {
         $offset = ($page - 1) * $limit;
+        
+        // Admin can see hidden confessions, regular users cannot
+        $hiddenCondition = $includeHidden ? '' : 'AND c.hidden = 0';
         
         $stmt = $this->pdo->prepare("
             SELECT c.*, u.username, u.avatar,
                    (SELECT COUNT(*) FROM comments WHERE confession_id = c.id AND is_approved = 1) as comments_count
             FROM confessions c 
             JOIN users u ON c.user_id = u.id 
-            WHERE c.is_approved = 1 
+            WHERE c.is_approved = 1 {$hiddenCondition}
             ORDER BY c.created_at DESC 
             LIMIT ? OFFSET ?
         ");
