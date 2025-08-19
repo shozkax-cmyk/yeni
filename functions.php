@@ -136,8 +136,14 @@ class ConfessionDB {
     }
     
     // Statistics functions
-    public function getTotalConfessions() {
-        $stmt = $this->pdo->query("SELECT COUNT(*) FROM confessions WHERE is_approved = 1");
+    public function getTotalConfessions($includeHidden = null) {
+        if ($includeHidden === null) {
+            // For admin - include all
+            $stmt = $this->pdo->query("SELECT COUNT(*) FROM confessions WHERE is_approved = 1");
+        } else {
+            // For regular users - exclude hidden
+            $stmt = $this->pdo->query("SELECT COUNT(*) FROM confessions WHERE is_approved = 1 AND hidden = 0");
+        }
         return $stmt->fetchColumn();
     }
     
