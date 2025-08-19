@@ -3,7 +3,7 @@
 -- Auto-generated SQL file for confession website
 
 -- Create database (uncomment if needed)
--- CREATE DATABASE IF NOT EXISTS confession_db;
+-- CREATE DATABASE IF NOT EXISTS confession_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 -- USE confession_db;
 
 -- Users table
@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS users (
     is_active TINYINT(1) DEFAULT 1,
     avatar VARCHAR(255) DEFAULT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
+) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- Confessions table
 CREATE TABLE IF NOT EXISTS confessions (
