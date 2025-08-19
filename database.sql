@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS likes (
     UNIQUE KEY unique_like (user_id, confession_id),
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
     FOREIGN KEY (confession_id) REFERENCES confessions(id) ON DELETE CASCADE
-);
+) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- Insert default admin user
 INSERT INTO users (username, password, email, ip, is_admin) VALUES 
