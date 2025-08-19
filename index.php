@@ -109,7 +109,7 @@ $page = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
 
 // Admin tüm itirafları görür, diğer kullanıcılar sadece hidden = 0 olanları
 $confessions = isAdmin() 
-    ? $db->getConfessions($page, CONFESSIONS_PER_PAGE) 
+    ? $db->getConfessions($page, CONFESSIONS_PER_PAGE, true) 
     : $db->getConfessions($page, CONFESSIONS_PER_PAGE, false);
 
 $totalConfessions = isAdmin() 
