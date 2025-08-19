@@ -33,6 +33,7 @@ CREATE TABLE IF NOT EXISTS confessions (
     likes_count INT DEFAULT 0,
     comments_count INT DEFAULT 0,
     is_approved TINYINT(1) DEFAULT 1,
+    hidden TINYINT(1) DEFAULT 0,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
