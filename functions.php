@@ -98,7 +98,7 @@ class ConfessionDB {
             SELECT c.*, u.username, u.avatar 
             FROM confessions c 
             JOIN users u ON c.user_id = u.id 
-            WHERE c.id = ? AND c.is_approved = 1
+            WHERE c.id = ? AND c.is_approved = 1 AND c.hidden = 0
         ");
         $stmt->execute([$id]);
         return $stmt->fetch();
