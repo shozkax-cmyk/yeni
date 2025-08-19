@@ -333,7 +333,7 @@ include 'includes/header.php';
                     
                     <?php if (isLoggedIn()): ?>
                         <!-- Comment Form -->
-                        <form class="comment-form" data-confession-id="<?php echo $confession['id']; ?>" style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border-color);">
+                        <form class="comment-form" method="POST" action="process-comment.php" enctype="multipart/form-data" data-confession-id="<?php echo $confession['id']; ?>" style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border-color);">
                             <div class="form-group">
                                 <textarea name="comment_text" placeholder="Yorumunuzu yazın..." class="form-textarea" style="min-height: 80px;" required></textarea>
                             </div>
