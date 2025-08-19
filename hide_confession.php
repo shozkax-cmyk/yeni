@@ -13,7 +13,8 @@ $params = json_decode($json, true);
 if (isset($params['confession_id'])) {
     $confession_id = intval($params['confession_id']);
 
-    $stmt = $db->prepare("UPDATE confessions SET hidden = 1 WHERE id = ?");
+    // Use PDO connection directly
+    $stmt = $pdo->prepare("UPDATE confessions SET hidden = 1 WHERE id = ?");
     if ($stmt->execute([$confession_id])) {
         $data['success'] = true;
         $data['message'] = 'İtiraf gizlendi';
